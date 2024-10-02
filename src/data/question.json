@@ -1,0 +1,13 @@
+[
+    {
+      "name": "Default Quiz",
+      "questions": [
+        {
+          "question": "What is React?",
+          "type": "open-ended",
+          "correctAnswer": "React is a JavaScript library for building user interfaces."
+        }
+        ]
+    }
+]
+  

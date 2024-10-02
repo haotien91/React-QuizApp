@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 
-function Timer({ dispatch, secondsRemaining }) {
+function Timer({ dispatch, secondsRemaining, isTimerEnabled }) {
   const mins = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
 
   useEffect(
     function () {
+      if (!isTimerEnabled) return;
       const id = setInterval(function () {
         dispatch({ type: "tick" });
       }, 1000);

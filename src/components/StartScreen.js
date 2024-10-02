@@ -1,13 +1,28 @@
-function StartScreen({ numQuestions, dispatch }) {
+function StartScreen({ dispatch, questionSets = [] }) {
   return (
     <div className="start">
-      <h2>Welcome to The React Quiz!</h2>
-      <h3>{numQuestions} questions to test your React mastery</h3>
+      <h2>Select a Quiz to Start</h2>
+      {questionSets.length === 0 ? (
+        <p>No quizzes available. Please create one.</p>
+      ) : (
+        <ul>
+          {questionSets.map((quiz, index) => (
+            <li key={index}>
+              <button
+                className="btn btn-ui"
+                onClick={() => dispatch({ type: 'selectQuestionSet', payload: quiz })}
+              >
+                {quiz.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
       <button
         className="btn btn-ui"
-        onClick={() => dispatch({ type: "start" })}
+        onClick={() => dispatch({ type: 'startCreating' })}
       >
-        Let's start
+        Create New Quiz
       </button>
     </div>
   );
